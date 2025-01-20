@@ -1,7 +1,7 @@
 package edu.ifmt.cobrancaifmt3.model;
 
 public enum StatusTitulo {
-	Pendente("Pendente"),
+		("Pendente"),
 	Recebido("Recebido");
 	
 	private String descricao;

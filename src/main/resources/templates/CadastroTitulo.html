@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<meta charset="UTF-8">
@@ -14,6 +16,14 @@
 </nav>
 
 <form action="/titulos" method="POST">
+	
+	<div class="alert alert-success alert-dismissible" role="alert"
+	th:if="${!#strings.isEmpty(mensagem)}">
+		
+		<button type="button" class="close" data-dimiss="alert"></button>
+		<span th:text="${mensagem}">Salvo com Sucesso!</span>
+	</div>
+		
 	
 	<div class="card">
 		<div class="card-header tux-titulo-panel"><span class="tux-titulo-panel"Novo Titulo></span>
@@ -41,8 +51,8 @@
 					<label for="status" class="col-sm-2 col-form-label">Status</label>
 					<div class="col-sm-2">
 						<select class="form-control" id="status" name="status">
-							<option>Pendente</option>
-							<option>Recebido</option>
+							<option th:each="status : ${todosStatusTitulo}"
+							th:value="${status}" th:text="${status.descricao}"></option>							
 						</select>
 					</div>					
 				</div>
